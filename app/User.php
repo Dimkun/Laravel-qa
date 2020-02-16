@@ -2,7 +2,6 @@
 
 namespace App;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -37,13 +36,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function questions() {
+    public function questions()
+    {
         return $this->hasMany(Question::class);
     }
 
-    public function setTitleAttibute($value) {
-        $this->attributes['title'] = $value;
-        $this->attributes['slug'] = str_slug($value);
-
-    }
 }
